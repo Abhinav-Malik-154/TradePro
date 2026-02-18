@@ -21,14 +21,14 @@ contract DeployScript is Script {
         vm.stopBroadcast();
         
         // Save deployment info
-        string memory json = "deployment.json";
-        string memory data = string.concat(
-            '{"address":"', vm.toString(address(verifier)),
-            '","deployer":"', vm.toString(vm.addr(deployerPrivateKey)),
-            '","chainId":"', vm.toString(block.chainid),
-            '","block":"', vm.toString(block.number),
-            '"}'
-        );
-        vm.writeJson(data, json);
+        // string memory json = "deployment.json";
+        // string memory data = string.concat(
+        //     '{"address":"', vm.toString(address(verifier)),
+        //     '","deployer":"', vm.toString(vm.addr(deployerPrivateKey)),
+        //     '","chainId":"', vm.toString(block.chainid),
+        //     '","block":"', vm.toString(block.number),
+        //     '"}'
+        // );
+        // vm.writeJson(data, json);
     }
 }
