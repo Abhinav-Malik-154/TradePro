@@ -2,6 +2,13 @@
 node_modules/
 package-lock.json
 
+# Python virtual environments
+.venv/
+venv/
+ml_backend/venv/
+__pycache__/
+*.pyc
+
 # Build outputs
 dist/
 out/
