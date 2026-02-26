@@ -74,6 +74,10 @@ class PricePredictor:
         'BTC/USD': 'BTC-USD', 'ETH/USD': 'ETH-USD', 'SOL/USD': 'SOL-USD',
     }
     
+    # Class-level cache to persist across requests
+    _data_cache: Dict[str, Tuple[float, pd.DataFrame]] = {}
+    CACHE_TTL = 300  # 5 minutes
+    
     def __init__(self):
         self.model = None
         self.feature_columns = []
@@ -85,7 +89,18 @@ class PricePredictor:
         return self.CRYPTO_SYMBOLS.get(symbol, symbol)
     
     def fetch_data(self, symbol: str, period: str = "2y") -> Optional[pd.DataFrame]:
-        """Fetch historical data from yfinance"""
+        """Fetch historical data from yfinance (cached for 5 min)"""
+        import time
+        cache_key = f"{self.normalize_symbol(symbol)}:{period}"
+        
+        # Check cache
+        if cache_key in self._data_cache:
+            ts, df = self._data_cache[cache_key]
+            if time.time() - ts < self.CACHE_TTL:
+                logger.info(f"Using cached data for {symbol}")
+                return df.copy()
+            del self._data_cache[cache_key]
+        
         if yf is None:
             logger.warning("yfinance not installed, using mock data")
             return self._generate_mock_data(symbol)
@@ -100,6 +115,8 @@ class PricePredictor:
             
             df = df.reset_index()
             df.columns = [c.lower() for c in df.columns]
+            # Cache the result
+            self._data_cache[cache_key] = (time.time(), df)
             return df
         except Exception as e:
             logger.error(f"Error fetching data for {symbol}: {e}")
