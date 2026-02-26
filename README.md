@@ -105,25 +105,28 @@ Modern crypto trading is broken into two extremes:
 <p align="center"><em>The main dashboard with live price charts, order book, quick trade cards, and market stats.</em></p>
 
 ### 2. AI-Powered Stock & Crypto Analysis
-<!-- Replace the path with your actual screenshot -->
 <p align="center">
-  <img src="docs/screenshots/ai-analysis.png" alt="AI Analysis Page" width="85%" />
+  <img src="docs/screenshots/ai-analysis-1.png" alt="AI Analysis — Charts & Predictions" width="85%" />
+</p>
+<p align="center">
+  <img src="docs/screenshots/ai-analysis-2.png" alt="AI Analysis — Company Profile, Sentiment & Technical Indicators" width="85%" />
 </p>
 <p align="center"><em>The <code>/stocks/[symbol]</code> page showing multi-agent analysis, LightGBM predictions, sentiment, and candlestick charts.</em></p>
 
 ### 3. Portfolio & Transaction History
-<!-- Replace the path with your actual screenshot -->
 <p align="center">
-  <img src="docs/screenshots/portfolio.png" alt="Portfolio" width="85%" />
+  <img src="docs/screenshots/portfolio-1.png" alt="Portfolio Overview" width="85%" />
+</p>
+<p align="center">
+  <img src="docs/screenshots/portfolio-2.png" alt="Transaction History" width="85%" />
 </p>
 <p align="center"><em>The portfolio view: asset holdings, cost basis, P&L, allocation %, and each trade's blockchain verification badge.</em></p>
 
 ### 4. Trade Execution & Blockchain Verification
-<!-- Replace the path with your actual GIF or screenshot -->
 <p align="center">
-  <img src="docs/screenshots/trade-flow.gif" alt="Trade Flow" width="85%" />
+  <img src="docs/screenshots/trade-verification.png" alt="On-Chain Trade Verification on PolygonScan" width="85%" />
 </p>
-<p align="center"><em>A GIF showing: Place trade → MetaMask confirmation → Trade verified on-chain → "Verified ✓" badge appears.</em></p>
+<p align="center"><em>A real trade verified on <b>Polygon Amoy Testnet</b> — transaction hash, block confirmation, and on-chain proof visible on <a href="https://amoy.polygonscan.com/tx/0xfdffda5a4377e560ee47efd5d95f8e91dc6a65a17d3846b3dbc7c3d84e77f44a">PolygonScan</a>.</em></p>
 
 ---
 
