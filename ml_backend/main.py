@@ -13,11 +13,21 @@ app = FastAPI(title="TradePro AI Agents")
 # Serve static files
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
+# CORS configuration - support multiple origins
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
+allowed_origins = [
+    FRONTEND_URL,
+    "http://localhost:3000",
+    "http://localhost:3001",
+    "https://tradepros.vercel.app",
+]
+# Remove duplicates and empty strings
+allowed_origins = list(set(filter(None, allowed_origins)))
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONTEND_URL],
+    allow_origins=allowed_origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
