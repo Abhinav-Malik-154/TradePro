@@ -11,26 +11,8 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-from typing import Optional, Dict, Any
+from typing import Optional
 from orchestrator.agent_orchestrator import AgentOrchestrator
-import time
-
-# Simple in-memory cache with TTL to reduce Yahoo Finance API calls
-_cache: Dict[str, Dict[str, Any]] = {}
-CACHE_TTL = 300  # 5 minutes
-
-def get_cached(key: str) -> Optional[Any]:
-    """Get value from cache if not expired"""
-    if key in _cache:
-        entry = _cache[key]
-        if time.time() - entry["ts"] < CACHE_TTL:
-            return entry["data"]
-        del _cache[key]
-    return None
-
-def set_cached(key: str, data: Any) -> None:
-    """Set value in cache with timestamp"""
-    _cache[key] = {"ts": time.time(), "data": data}
 
 
 from agents.sentiment_agent import SentimentAnalystAgent
@@ -217,21 +199,14 @@ async def health_check():
 @router.get("/profile/{symbol}")
 async def get_company_profile(symbol: str):
     """
-    Get company profile info using yfinance (cached for 5 min)
+    Get company profile info using yfinance
     """
-    cache_key = f"profile:{symbol.upper()}"
-    cached = get_cached(cache_key)
-    if cached:
-        return JSONResponse(
-            content=cached,
-            headers={"Cache-Control": "public, max-age=1800, stale-while-revalidate=3600"},
-        )
-    
     try:
         import yfinance as yf
         ticker = yf.Ticker(symbol.upper())
         info = ticker.info or {}
-        result = {
+        return JSONResponse(
+            content={
                 "status": "success",
                 "data": {
                     "symbol": symbol.upper(),
@@ -248,10 +223,7 @@ async def get_company_profile(symbol: str):
                     "avg_volume": info.get("averageVolume", 0),
                     "next_earnings": info.get("earningsTimestamp", ""),
                 },
-            }
-        set_cached(cache_key, result)
-        return JSONResponse(
-            content=result,
+            },
             headers={"Cache-Control": "public, max-age=1800, stale-while-revalidate=3600"},
         )
     except Exception as e:
