@@ -35,7 +35,8 @@
 
 <!-- HERO SCREENSHOT -->
 <p align="center">
-  <img src="docs/screenshots/dashboard.png" alt="TradePro Dashboard" width="90%" />
+  <img src="<img width="1891" height="950" alt="Screenshot 2026-02-27 002451" src="https://github.com/user-attachments/assets/783b7020-39c8-474e-837f-d8c3408f1650" />
+" alt="TradePro Dashboard" width="90%" />
   <br />
   <em>TradePro Dashboard — Live candlestick charts, order book, quick trade cards, and real-time market stats</em>
 </p>
