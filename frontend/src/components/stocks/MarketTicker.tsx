@@ -12,7 +12,7 @@ interface MarketIndex {
   changePercent: number;
 }
 
-const ML_API_URL = process.env.NEXT_PUBLIC_ML_API_URL || 'http://localhost:8000';
+const ML_API_URL = (process.env.NEXT_PUBLIC_ML_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
 
 const DEFAULT_INDICES: MarketIndex[] = [
   { symbol: 'SPX', name: 'S&P 500', value: 6946.5, change: 59.10, changePercent: 0.86 },

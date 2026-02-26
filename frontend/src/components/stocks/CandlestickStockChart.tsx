@@ -27,7 +27,7 @@ interface PredictionData {
 
 type Period = '1M' | '3M' | '6M' | 'YTD' | '1Y' | '5Y' | 'All';
 
-const ML_API_URL = process.env.NEXT_PUBLIC_ML_API_URL || 'http://localhost:8000';
+const ML_API_URL = (process.env.NEXT_PUBLIC_ML_API_URL || 'http://localhost:8000').replace(/\/+$/, '');
 
 const PERIOD_MAP: Record<Period, string> = {
   '1M': '1mo',
