@@ -6,11 +6,12 @@
   "description": "",
   
   "main": "dist/server.js",
-  "scripts": {
-    "dev": "nodemon src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
-  },
+"scripts": {
+  "dev": "nodemon src/server.ts",
+  "build": "tsc && cp -r src/abis dist/",
+  "start": "node dist/server.js",
+  "clean": "rm -rf dist"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
