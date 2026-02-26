@@ -24,7 +24,7 @@
 </p>
 
 <p align="center">
-  <!-- <a href="#">🔗 Live Demo</a> · <a href="#">🎬 Video Walkthrough</a> · -->
+  <a href="https://mini-zerodha.vercel.app">🔗 Live Demo</a> ·
   <a href="./contracts/README.md">📜 Contracts</a> ·
   <a href="./backend/README.md">⚙️ Backend</a> ·
   <a href="./frontend/README.md">🎨 Frontend</a> ·
@@ -53,6 +53,7 @@
 - [Project Structure](#-project-structure)
 - [Getting Started](#-getting-started)
 - [Environment Variables](#-environment-variables)
+- [Deployment](#-deployment)
 - [Security Design](#-security-design)
 - [Roadmap](#-roadmap)
 - [License](#-license)
@@ -448,7 +449,37 @@ npm run dev
 
 ---
 
-## 🔒 Security Design
+## � Deployment
+
+TradePro is designed for production deployment using:
+
+| Service | Platform | Guide |
+|---------|----------|-------|
+| **Frontend** | Vercel | Zero-config Next.js deployment |
+| **Backend** | Render | Express.js + Socket.IO WebService |
+| **ML Backend** | Render | FastAPI Python WebService |
+| **Database** | MongoDB Atlas | Cloud-hosted MongoDB |
+| **Blockchain** | Polygon Amoy | EVM-compatible L2 testnet |
+
+**📖 Full deployment guide:** [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
+
+### Quick Deploy
+
+1. **Backend → Render:** Import repo → Root: `backend` → Use `render.yaml`
+2. **ML Backend → Render:** Import repo → Root: `ml_backend` → Use `render.yaml`
+3. **Frontend → Vercel:** Import repo → Root: `frontend` → Add env vars
+
+### Deployment Files
+
+```
+backend/render.yaml      # Render blueprint for Express.js
+ml_backend/render.yaml   # Render blueprint for FastAPI
+docs/DEPLOYMENT.md       # Complete step-by-step guide
+```
+
+---
+
+## �🔒 Security Design
 
 | Layer | Mechanism | Purpose |
 |---|---|---|

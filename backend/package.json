@@ -1,13 +1,14 @@
+
+
 {
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/server.ts",
+    "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
-    "clean": "rm -rf dist"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
