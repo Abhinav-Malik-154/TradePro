@@ -517,8 +517,8 @@ docs/DEPLOYMENT.md       # Complete step-by-step guide
 - [x] Multi-wallet provider support (WalletConnect, Injected, Coinbase)
 - [x] Trade notifications via WebSocket push
 - [x] Mobile-responsive optimizations
+- [x] Multi-chain support (Polygon mainnet, Ethereum L2s)
 - [ ] Limit order matching engine
-- [ ] Multi-chain support (Polygon mainnet, Ethereum L2s)
 
 ---
 
