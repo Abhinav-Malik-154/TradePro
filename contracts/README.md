@@ -35,7 +35,7 @@ struct TradeProof {
     uint256 timestamp;
     address trader;
     uint256 blockNumber;
-    bytes32 previousHash;   // ← links to the last verified trade
+    bytes32 previousHash;   
     bool exists;
 }
 
