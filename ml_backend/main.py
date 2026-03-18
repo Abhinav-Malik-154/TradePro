@@ -38,6 +38,14 @@ app.include_router(router)
 async def root():
     return {"message": "TradePro AI Agents API", "status": "running"}
 
+@app.get("/health")
+async def health_check():
+    return {
+        "status": "ok",
+        "message": "Backend is healthy",
+        "service": "TradePro ML Backend"
+    }
+
 if __name__ == "__main__":
     host = os.getenv("HOST", "0.0.0.0")
     port = int(os.getenv("PORT", "8000"))
