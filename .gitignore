@@ -41,3 +41,6 @@ yarn-error.log*
 forge-cache/
 contracts/lib/
 contracts/out/
+temp_auto_push.bat
+temp_interactive_push.bat
+branch_structure.json
